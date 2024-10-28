@@ -20,7 +20,7 @@ public:
     // Retrieves the value of a proposition by name
     bool getPropositionValue(const std::string& name) const;
 
-    // Surcharge de l'opérateur == pour comparer deux états
+    // Overloading the == operator to compare two states
     bool operator==(const State& other) const {
         return id == other.id;
     }

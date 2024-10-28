@@ -3,7 +3,7 @@
 #define TRANSITION_H
 
 #include "State.h"
-#include "LogicalFormula.h" // Assuming LogicalFormula class is used as a condition
+#include "LogicalFormula.h"
 
 // Represents a transition between two states
 class Transition {

@@ -20,7 +20,5 @@ void Proposition::setValue(bool value) {
 
 // Evaluates if the state satisfies this proposition
 bool Proposition::evaluate(const State& state) const {
-    // Assuming `State` has a method `getPropositionValue` to retrieve the value of a proposition
-    // by name (e.g., bool State::getPropositionValue(const std::string& propName) const;)
     return state.getPropositionValue(name) == value;
 }
