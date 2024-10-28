@@ -2,10 +2,10 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include "TransitionSystem.h"
-#include "State.h"
-#include "Proposition.h"
-#include "Transition.h"
+#include "include/TransitionSystem.h"
+#include "include/State.h"
+#include "include/Proposition.h"
+#include "include/Transition.h"
 
 // Assume State class has a method getAttributes to access attribute map
 // Assume Proposition class has a method evaluate that takes a State as parameter

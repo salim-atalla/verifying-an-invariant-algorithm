@@ -1,5 +1,9 @@
 #include "LogicalFormula.h"
 
+
+// Default constructor
+LogicalFormula::LogicalFormula() {}
+
 // Constructor for a simple proposition formula
 LogicalFormula::LogicalFormula(const std::shared_ptr<Proposition> &proposition)
     : proposition(proposition), op(LogicalOperator::AND), left(nullptr), right(nullptr) {}

@@ -1,9 +1,9 @@
-// State.h
 #ifndef STATE_H
 #define STATE_H
 
 #include <string>
 #include <unordered_map>
+#include <functional>
 
 // Represents a state in the transition system
 class State {
@@ -22,8 +22,19 @@ public:
 
     // Overloading the == operator to compare two states
     bool operator==(const State& other) const {
-        return id == other.id;
+        return id == other.id && propositions == other.propositions;
     }
+
+    // Hash function
+    struct Hash {
+        std::size_t operator()(const State& state) const {
+            std::size_t hashValue = std::hash<std::string>()(state.id);
+            for (const auto& pair : state.propositions) {
+                hashValue ^= std::hash<std::string>()(pair.first) ^ std::hash<bool>()(pair.second);
+            }
+            return hashValue;
+        }
+    };
 
 private:
     std::string id; // Unique identifier for the state

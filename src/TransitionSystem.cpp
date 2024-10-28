@@ -27,7 +27,7 @@ bool TransitionSystem::evaluateInvariant(const State& state, const Proposition& 
 
 // Verifies if the invariant holds for all reachable states from the initial state
 bool TransitionSystem::verifyInvariant(const Proposition& invariant) {
-    std::unordered_set<State> visitedStates;
+    std::unordered_set<State, State::Hash> visitedStates;
     std::stack<State> stack;
 
     // Starting from the first state as the initial state

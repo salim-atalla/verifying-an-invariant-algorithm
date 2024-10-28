@@ -1,37 +1,24 @@
-# Name of the executable
-TARGET = main
-
-# Directories
-SRC_DIR = src
-INC_DIR = include
-OBJ_DIR = obj
-
-# Source files and object files
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-
-# Compiler and flags
 CXX = g++
-CXXFLAGS = -I$(INC_DIR) -std=c++17 -Wall
-LDFLAGS =
+CXXFLAGS = -Iinclude -std=c++17 -Wall
 
-# Default rule to build the executable
-all: $(TARGET)
+OBJS = obj/main.o obj/TransitionSystem.o obj/State.o obj/Transition.o obj/Proposition.o obj/LogicalFormula.o
 
-# Linking step to create the final executable
-$(TARGET): $(OBJECTS)
-	$(CXX) $(OBJECTS) -o $@ $(LDFLAGS)
+# Default target
+all: obj $(OBJS)
+	$(CXX) -o main $(OBJS)
 
-# Compiling each source file into an object file
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+# Rule to create object files
+obj/%.o: src/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Rule to create the object files directory if it does not exist
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# Rule for main.cpp specifically
+obj/main.o: main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp -o obj/main.o
 
-# Clean rule to remove generated files
+# Clean target to remove object files and the main executable
 clean:
-	rm -rf $(OBJ_DIR) $(TARGET)
+	rm -f obj/*.o main
 
-.PHONY: all clean
+# Target to create obj directory
+obj:
+	mkdir -p obj
