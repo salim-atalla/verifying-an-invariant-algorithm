@@ -9,7 +9,7 @@
 class State {
 public:
     // Constructor
-    State(const std::string& id);
+    State(const std::string& id, const std::unordered_map<std::string, bool>& propositions = {});
 
     // Getter for the state ID
     std::string getId() const;

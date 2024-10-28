@@ -20,6 +20,9 @@ private:
     std::shared_ptr<LogicalFormula> right;     // Right operand for binary operations
 
 public:
+    // Default constructor
+    LogicalFormula();
+
     // Constructor for a simple proposition
     LogicalFormula(const std::shared_ptr<Proposition> &proposition);
 

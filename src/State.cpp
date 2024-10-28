@@ -2,8 +2,9 @@
 #include "State.h"
 
 // Constructor
-State::State(const std::string& id) : id(id) {}
-
+State::State(const std::string& id, const std::unordered_map<std::string, bool>& propositions)
+    : id(id), propositions(propositions) {}
+    
 // Returns the state ID
 std::string State::getId() const {
     return id;

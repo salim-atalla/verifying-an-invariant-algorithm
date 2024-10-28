@@ -25,12 +25,12 @@ public:
     // Verifies if the invariant holds for all reachable states
     bool verifyInvariant(const Proposition& invariant);
 
+    // Helper function to evaluate if a state satisfies a proposition
+    bool evaluateInvariant(const State& state, const Proposition& invariant);
+
 private:
     std::vector<State> states;             // Collection of states
     std::vector<Transition> transitions;   // Collection of transitions
-
-    // Helper function to evaluate if a state satisfies a proposition
-    bool evaluateInvariant(const State& state, const Proposition& invariant);
 };
 
 #endif // TRANSITIONSYSTEM_H
