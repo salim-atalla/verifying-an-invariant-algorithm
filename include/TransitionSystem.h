@@ -1,11 +1,13 @@
-// TransitionSystem.h
 #ifndef TRANSITIONSYSTEM_H
 #define TRANSITIONSYSTEM_H
 
 #include <vector>
 #include <string>
+#include <stack>
+#include <unordered_set>
 #include "State.h"
 #include "Transition.h"
+#include "Proposition.h"
 
 // Manages states and transitions in a transition system
 class TransitionSystem {
@@ -20,9 +22,15 @@ public:
     const std::vector<State>& getStates() const;
     const std::vector<Transition>& getTransitions() const;
 
+    // Verifies if the invariant holds for all reachable states
+    bool verifyInvariant(const Proposition& invariant);
+
 private:
-    std::vector<State> states;       // Collection of states
-    std::vector<Transition> transitions; // Collection of transitions
+    std::vector<State> states;             // Collection of states
+    std::vector<Transition> transitions;   // Collection of transitions
+
+    // Helper function to evaluate if a state satisfies a proposition
+    bool evaluateInvariant(const State& state, const Proposition& invariant);
 };
 
 #endif // TRANSITIONSYSTEM_H
