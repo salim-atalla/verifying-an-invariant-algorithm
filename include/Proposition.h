@@ -4,24 +4,29 @@
 #include <string>
 #include "State.h"
 
+
+enum class Operator { EQUAL, GREATER_EQUAL, LESS_EQUAL, GREATER, LESS };
+
+
 // Represents a logical proposition with a name and a truth value
 class Proposition {
 private:
-    std::string name;    // Name of the proposition
-    bool value;          // Truth value of the proposition
+    std::string name;
+    int value;
+    Operator op;
 
 public:
     // Constructor
-    Proposition(const std::string &name, bool value);
+    Proposition(const std::string &name, int value, Operator op = Operator::EQUAL);
 
     // Getter for the name of the proposition
     std::string getName() const;
 
     // Getter for the truth value of the proposition
-    bool getValue() const;
+    int getValue() const;
 
     // Setter for the truth value of the proposition
-    void setValue(bool value);
+    void setValue(int value);
 
     // Evaluates if the state satisfies this proposition
     bool evaluate(const State& state) const;

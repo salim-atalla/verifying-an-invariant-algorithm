@@ -9,16 +9,16 @@
 class State {
 public:
     // Constructor
-    State(const std::string& id, const std::unordered_map<std::string, bool>& propositions = {});
+    State(const std::string& id, const std::unordered_map<std::string, int>& propositions = {});
 
     // Getter for the state ID
     std::string getId() const;
 
     // Adds or updates a proposition value in the state
-    void setPropositionValue(const std::string& name, bool value);
+    void setPropositionValue(const std::string& name, int value);
 
     // Retrieves the value of a proposition by name
-    bool getPropositionValue(const std::string& name) const;
+    int getPropositionValue(const std::string& name) const;
 
     // Overloading the == operator to compare two states
     bool operator==(const State& other) const {
@@ -38,7 +38,7 @@ public:
 
 private:
     std::string id; // Unique identifier for the state
-    std::unordered_map<std::string, bool> propositions;  // Map of proposition names to values
+    std::unordered_map<std::string, int> propositions;  // Map of proposition names to values
 };
 
 #endif // STATE_H

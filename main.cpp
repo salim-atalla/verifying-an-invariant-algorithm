@@ -40,16 +40,19 @@ int main() {
     mutexSystem.addTransition(exitProcess2);
 
     // Mutual exclusion proposition: semaphore must be 0 when a process is in the critical section
-    Proposition mutualExclusion("semaphore", 0);
+    Proposition mutualExclusion("semaphore", 0, Operator::EQUAL);
 
     // Checking mutual exclusion invariant
     bool invariantSatisfied = true;
     for (const auto& state : mutexSystem.getStates()) {
-        if (!mutexSystem.evaluateInvariant(state, mutualExclusion)) {
-            std::cout << "Mutual exclusion not satisfied for state: " << state.getId() << std::endl;
-            invariantSatisfied = false;
-        } else {
-            std::cout << "Mutual exclusion satisfied for state: " << state.getId() << std::endl;
+        // Only check mutual exclusion in critical section states
+        if (state.getPropositionValue("process1") == 1 || state.getPropositionValue("process2") == 1) {
+            if (!mutexSystem.evaluateInvariant(state, mutualExclusion)) {
+                std::cout << "Mutual exclusion not satisfied for state: " << state.getId() << std::endl;
+                invariantSatisfied = false;
+            } else {
+                std::cout << "Mutual exclusion satisfied for state: " << state.getId() << std::endl;
+            }
         }
     }
 
@@ -83,7 +86,7 @@ int main() {
     counterSystem.addTransition(decrement);
 
     // Proposition: counter should never be negative
-    Proposition nonNegativeCounter("counter", 0);
+    Proposition nonNegativeCounter("counter", 0, Operator::GREATER_EQUAL);
 
     // Checking invariant for the counter
     invariantSatisfied = true;
