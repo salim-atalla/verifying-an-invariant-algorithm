@@ -1,4 +1,3 @@
-```markdown
 # Transition System Invariant Verifier
 
 This project is a C++ application for defining and verifying invariants within transition systems. It leverages classes to represent logical formulas, propositions, states, transitions, and transition systems, ultimately allowing the verification of invariants over reachable states in a transition system.
@@ -6,7 +5,6 @@ This project is a C++ application for defining and verifying invariants within t
 ## Project Structure
 
 The project has the following directory structure:
-```
 
 ```
 root
