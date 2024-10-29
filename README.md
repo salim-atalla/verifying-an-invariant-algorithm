@@ -8,6 +8,7 @@ This project is a C++ application for defining and verifying invariants within t
 The project has the following directory structure:
 ```
 
+```
 root
 ├── include/ # Header files
 │ ├── LogicalFormula.h
@@ -22,23 +23,22 @@ root
 │ ├── Transition.cpp
 │ └── TransitionSystem.cpp
 └── main.cpp # Entry point of the program
-
-````
+```
 
 ## Classes Overview
 
-- **LogicalFormula**: Represents logical expressions that combine propositions using `AND`, `OR`, and `NOT` operators.
-- **Proposition**: Defines a basic logical statement with a specific value and comparison operator (e.g., `EQUAL`, `GREATER`).
-- **State**: Represents a state within the system, identified by an ID and associated propositions.
-- **Transition**: Models transitions between states, with a condition (logical formula) determining when the transition is valid.
-- **TransitionSystem**: Manages states and transitions, providing methods to add new states and transitions and verify if a specific invariant holds across all reachable states.
+-   **LogicalFormula**: Represents logical expressions that combine propositions using `AND`, `OR`, and `NOT` operators.
+-   **Proposition**: Defines a basic logical statement with a specific value and comparison operator (e.g., `EQUAL`, `GREATER`).
+-   **State**: Represents a state within the system, identified by an ID and associated propositions.
+-   **Transition**: Models transitions between states, with a condition (logical formula) determining when the transition is valid.
+-   **TransitionSystem**: Manages states and transitions, providing methods to add new states and transitions and verify if a specific invariant holds across all reachable states.
 
 ## Installation and Compilation
 
 ### Prerequisites
 
-- C++ compiler supporting C++11 or later.
-- CMake (optional, for build management).
+-   C++ compiler supporting C++11 or later.
+-   CMake (optional, for build management).
 
 ### Compilation
 
@@ -47,7 +47,7 @@ A `Makefile` can be created to automate compilation:
 ```bash
 # Navigate to the project root directory
 make
-````
+```
 
 Alternatively, compile manually:
 
