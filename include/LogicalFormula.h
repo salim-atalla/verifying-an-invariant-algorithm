@@ -4,12 +4,16 @@
 #include <memory>
 #include "Proposition.h"
 
+
+
 // Enum for logical operators
 enum class LogicalOperator {
     AND,
     OR,
     NOT
 };
+
+
 
 // Represents a logical formula which can contain propositions or other formulas
 class LogicalFormula {

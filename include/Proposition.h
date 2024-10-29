@@ -5,7 +5,10 @@
 #include "State.h"
 
 
-enum class Operator { EQUAL, GREATER_EQUAL, LESS_EQUAL, GREATER, LESS };
+
+// Enum class representing different comparison operators used for evaluating propositions.
+enum class Operator { EQUAL, GREATER_OR_EQUAL, LESS_OR_EQUAL, GREATER, LESS };
+
 
 
 // Represents a logical proposition with a name and a truth value
@@ -19,10 +22,8 @@ public:
     // Constructor
     Proposition(const std::string &name, int value, Operator op = Operator::EQUAL);
 
-    // Getter for the name of the proposition
+    // Getters for the name, value of the proposition
     std::string getName() const;
-
-    // Getter for the truth value of the proposition
     int getValue() const;
 
     // Setter for the truth value of the proposition

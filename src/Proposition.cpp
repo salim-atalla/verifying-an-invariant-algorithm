@@ -24,9 +24,9 @@ bool Proposition::evaluate(const State& state) const {
     switch (op) {
         case Operator::EQUAL:
             return propValue == value;
-        case Operator::GREATER_EQUAL:
+        case Operator::GREATER_OR_EQUAL:
             return propValue >= value;
-        case Operator::LESS_EQUAL:
+        case Operator::LESS_OR_EQUAL:
             return propValue <= value;
         case Operator::GREATER:
             return propValue > value;

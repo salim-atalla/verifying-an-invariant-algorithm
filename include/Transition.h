@@ -5,6 +5,8 @@
 #include "State.h"
 #include "LogicalFormula.h"
 
+
+
 // Represents a transition between two states
 class Transition {
 public:

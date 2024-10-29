@@ -9,6 +9,8 @@
 #include "Transition.h"
 #include "Proposition.h"
 
+
+
 // Manages states and transitions in a transition system
 class TransitionSystem {
 public:
@@ -29,8 +31,8 @@ public:
     bool evaluateInvariant(const State& state, const Proposition& invariant);
 
 private:
-    std::vector<State> states;             // Collection of states
-    std::vector<Transition> transitions;   // Collection of transitions
+    std::vector<State> states;
+    std::vector<Transition> transitions;
 };
 
 #endif // TRANSITIONSYSTEM_H

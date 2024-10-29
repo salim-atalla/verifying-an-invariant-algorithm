@@ -37,7 +37,7 @@ public:
     };
 
 private:
-    std::string id; // Unique identifier for the state
+    std::string id;
     std::unordered_map<std::string, int> propositions;  // Map of proposition names to values
 };
 

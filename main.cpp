@@ -7,12 +7,10 @@
 #include "include/Proposition.h"
 #include "include/Transition.h"
 
-// Assume State class has a method getAttributes to access attribute map
-// Assume Proposition class has a method evaluate that takes a State as parameter
 
 int main() {
     // Example 1: Mutual exclusion with a binary semaphore
-    std::cout << "Example 1: Mutual exclusion with binary semaphore\n";
+    std::cout << "\nExample 1 : Mutual exclusion with binary semaphore :\n\n";
 
     // Creating a transition system for mutual exclusion
     TransitionSystem mutexSystem;
@@ -62,8 +60,10 @@ int main() {
         std::cout << "At least one state does not satisfy mutual exclusion.\n" << std::endl;
     }
 
+    std::cout << "------------------------------------------------------\n" << std::endl;
+
     // Example 2: Counter system with minimum bound
-    std::cout << "Example 2: Counter system\n";
+    std::cout << "Example 2 : Counter system :\n\n";
 
     TransitionSystem counterSystem;
 
@@ -86,7 +86,7 @@ int main() {
     counterSystem.addTransition(decrement);
 
     // Proposition: counter should never be negative
-    Proposition nonNegativeCounter("counter", 0, Operator::GREATER_EQUAL);
+    Proposition nonNegativeCounter("counter", 0, Operator::GREATER_OR_EQUAL);
 
     // Checking invariant for the counter
     invariantSatisfied = true;
