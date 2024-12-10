@@ -40,8 +40,21 @@ int main() {
     // Mutual exclusion proposition: semaphore must be 0 when a process is in the critical section
     Proposition mutualExclusion("semaphore", 0, Operator::EQUAL);
 
-    // Using verifyInvariant to check mutual exclusion
-    if (mutexSystem.verifyInvariant(mutualExclusion)) {
+    // Checking mutual exclusion invariant
+    bool invariantSatisfied = true;
+    for (const auto& state : mutexSystem.getStates()) {
+        // Only check mutual exclusion in critical section states
+        if (state.getPropositionValue("process1") == 1 || state.getPropositionValue("process2") == 1) {
+            if (!mutexSystem.evaluateInvariant(state, mutualExclusion)) {
+                std::cout << "Mutual exclusion not satisfied for state: " << state.getId() << std::endl;
+                invariantSatisfied = false;
+            } else {
+                std::cout << "Mutual exclusion satisfied for state: " << state.getId() << std::endl;
+            }
+        }
+    }
+
+    if (invariantSatisfied) {
         std::cout << "All states satisfy mutual exclusion.\n" << std::endl;
     } else {
         std::cout << "At least one state does not satisfy mutual exclusion.\n" << std::endl;
@@ -75,8 +88,18 @@ int main() {
     // Proposition: counter should never be negative
     Proposition nonNegativeCounter("counter", 0, Operator::GREATER_OR_EQUAL);
 
-    // Using verifyInvariant to check the counter invariant
-    if (counterSystem.verifyInvariant(nonNegativeCounter)) {
+    // Checking invariant for the counter
+    invariantSatisfied = true;
+    for (const auto& state : counterSystem.getStates()) {
+        if (!counterSystem.evaluateInvariant(state, nonNegativeCounter)) {
+            std::cout << "Invariant 'counter >= 0' not satisfied for state: " << state.getId() << std::endl;
+            invariantSatisfied = false;
+        } else {
+            std::cout << "Invariant 'counter >= 0' satisfied for state: " << state.getId() << std::endl;
+        }
+    }
+
+    if (invariantSatisfied) {
         std::cout << "All states satisfy the invariant 'counter >= 0'.\n" << std::endl;
     } else {
         std::cout << "At least one state does not satisfy the invariant 'counter >= 0'.\n" << std::endl;
